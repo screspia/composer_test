@@ -9,6 +9,8 @@ yesterday = datetime.datetime.combine(
     datetime.datetime.today() - datetime.timedelta(1),
     datetime.datetime.min.time())
 
+bq_dataset_name = 'nombredeldataset'
+
 default_dag_args = {
     'start_date': yesterday,
     # To email on failure or retry set 'email' arg to your email and enable
@@ -39,6 +41,6 @@ bq_extraction_test = bigquery_operator.BigQueryOperator(
         ORDER BY 
         """,
         use_legacy_sql=False,
-        destination_dataset_table=nombredelatabla)
+        destination_dataset_table=bq_dataset_name)
 
 bq_extraction_test 
