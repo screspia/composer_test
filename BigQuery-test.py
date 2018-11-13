@@ -22,13 +22,13 @@ default_dag_args = {
 }
 
 
-# [START bigquery_load_test_schedule]
+# [START bigquery_extracton_test]
 with models.DAG(
         'tracking_bigquery_load_test',
         # Continue to run DAG once per day
         schedule_interval=datetime.timedelta(days=1),
         default_args=default_dag_args) as dag:
-    # [END bigquery_load_test_schedule]
+    # [END bigquery_extracton_test]
 
 bq_extraction_test = bigquery_operator.BigQueryOperator(
         task_id='bq_extraction_test_query',
@@ -41,4 +41,4 @@ bq_extraction_test = bigquery_operator.BigQueryOperator(
         use_legacy_sql=False,
         destination_dataset_table=nombredelatabla)
 
-bq_extraction_test
+bq_extraction_test 
